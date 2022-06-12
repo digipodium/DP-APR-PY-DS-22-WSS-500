@@ -16,4 +16,4 @@ if os.path.isdir('data analysis'):
 if os.path.isfile('set.ipynb'):
     print('set.ipynb is a file')
 
-print('size of pic',os.path.getsize('riot.png')/(1024*1024),'MB')
+print('size of pic',os.path.getsize('riot.png')/1024,'KB')
