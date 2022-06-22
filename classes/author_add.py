@@ -20,11 +20,23 @@ def show_authors():
     db.close()
     return authors
 
+def delete_author(name):
+    try:
+        db = opendb()
+        a = db.query(Author).filter_by(name=name).first()
+        db.delete(a)
+        db.commit()
+        db.close()
+        print("Author deleted")
+    except:
+        print("Author not found")
+
 while True:
     print('-'*20)
     print('1. Add author')
     print('2. Display authors')
-    print('3. Quit')
+    print('3. Delete author')
+    print('4. Quit')
     print('-'*20)
     choice = input('Enter your choice: ')
     if choice == '1':
@@ -35,4 +47,7 @@ while True:
         for author in show_authors():
             print(author)
     elif choice == '3':
+        name = input('Enter author name: ')
+        delete_author(name)
+    elif choice == '4':
         break
